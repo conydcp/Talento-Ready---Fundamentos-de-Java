@@ -1,9 +1,18 @@
 # Top Artist - Core Domain
 Top Artist is a platform that ranks artists based on fan engagement—specifically through ticket purchases for interactive experiences, as well as digital and physical music album sales. This repository contains the Pure Domain Core, completely isolated from any frameworks, databases, or external interfaces, following the principles of Clean Architecture / Hexagonal Architecture.
-## Architecture Highlights
-- **Pure Java**: No Spring, JPA, or web annotations. The domain depends only on itself.
-- **Dependency Inversion**: All external interactions are modeled as interfaces (`MessageNotifier`, `SmsNotifier`) and injected via the constructor.
-- **English Nomenclature**: Clean, modular code entirely in English.
+
+## Architecture & Design Principles
+This repository contains the **Pure Domain Core** following the principles of **Clean Architecture** and **Ports & Adapters (Hexagonal Architecture)**.
+* **Pure Domain:** Written in 100% Pure Java, strictly decoupled from external frameworks, databases, or web drivers.
+* **Constructor Injection:** Domain services depend only on interface abstractions (`Ports`) injected strictly via constructors.
+* **Explicit AAA Pattern:** All automated tests follow the **Arrange-Act-Assert** pattern explicitly separated by comments.
+* **100% Branch & Line Coverage:** Mathematical 100% logic coverage enforced by JaCoCo.
+
+## Execution Commands
+
+To execute the automated unit test suite:
+```bash
+mvn clean test
 
 ## Testing & Quality Assurance
 This project uses **JUnit 5**, **Mockito**, and **AssertJ** to ensure the highest standards of quality.
@@ -21,4 +30,5 @@ mvn clean test jacoco:report
 ```
 
 After running the command, you can view the coverage evidence by opening the generated HTML report:
+
 `target/site/jacoco/index.html`
