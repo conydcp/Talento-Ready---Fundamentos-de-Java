@@ -1,32 +1,32 @@
-# Top Artist - Core Domain
-Top Artist is a platform that ranks artists based on fan engagement—specifically through ticket purchases for interactive experiences, as well as digital and physical music album sales. This repository contains the Pure Domain Core, completely isolated from any frameworks, databases, or external interfaces, following the principles of Clean Architecture / Hexagonal Architecture.
+# Top Artist - Pure Domain Core
+
+Top Artist is a platform that ranks artists based on fan engagement—specifically through ticket purchases for interactive experiences, as well as digital and physical music album sales. 
+
+This repository contains the **Pure Domain Core**, completely isolated from any frameworks, databases, or external interfaces, following the principles of **Clean Architecture** and **Ports & Adapters (Hexagonal Architecture)**.
 
 ## Architecture & Design Principles
-This repository contains the **Pure Domain Core** following the principles of **Clean Architecture** and **Ports & Adapters (Hexagonal Architecture)**.
-* **Pure Domain:** Written in 100% Pure Java, strictly decoupled from external frameworks, databases, or web drivers.
-* **Constructor Injection:** Domain services depend only on interface abstractions (`Ports`) injected strictly via constructors.
-* **Explicit AAA Pattern:** All automated tests follow the **Arrange-Act-Assert** pattern explicitly separated by comments.
-* **100% Branch & Line Coverage:** Mathematical 100% logic coverage enforced by JaCoCo.
-
-## Execution Commands
-
-To execute the automated unit test suite:
-```bash
-mvn clean test
+* **Pure Domain Core:** Written in 100% Pure Java, strictly decoupled from external frameworks, databases, or web drivers.
+* **Constructor Injection:** Domain services depend exclusively on interface abstractions (`Ports`), which are injected strictly via constructors without framework magic.
+* **Domain Exception Model:** Custom hierarchy of business exceptions (`BusinessException`) to encapsulate and control domain-specific error rules.
+* **Ubiquitous Language:** Class names, methods, variables, and internal messages are completely structured in technical English.
 
 ## Testing & Quality Assurance
-This project uses **JUnit 5**, **Mockito**, and **AssertJ** to ensure the highest standards of quality.
-- **Rigorous AAA Pattern**: All tests are strictly structured using Arrange, Act, and Assert phases.
-- **Business Exceptions**: Custom exceptions are verified thoroughly using AssertJ's `assertThatThrownBy`.
-- **Mockito Extension**: Clean injection of dependencies and mocks using `@ExtendWith(MockitoExtension.class)`.
-- **Parameterized Tests**: Data-driven testing is utilized to reduce duplication (e.g., using `@NullAndEmptySource`).
-- **100% Coverage Enforced**: The test suite guarantees and enforces 100% Line and Branch coverage during the build, ensuring no orphan logic exists.
+This project leverages **JUnit 5** and **Mockito** to ensure domain integrity and high code quality:
+* **Rigorous AAA Pattern:** All unit tests strictly follow the **Arrange, Act, Assert** pattern, clearly separated using explicit code comments.
+* **Custom Exception Handling:** Business rules and edge cases are validated using JUnit 5's `assertThrows`.
+* **Mockito Isolation:** Complete isolation of external dependencies using `@Mock`, `@InjectMocks`, and `@ExtendWith(MockitoExtension.class)`.
+* **100% Coverage Enforced:** Mathematical 100% Line and Branch coverage enforced by JaCoCo during the Maven build phase, ensuring zero untested logical paths.
 
-## How to Verify
-To run the automated tests and generate the JaCoCo coverage report, execute the following command in the root of the project:
+## Execution & Coverage Commands
+
+To run the automated test suite and enforce coverage verification:
+```bash
+mvn clean test
+```
+To generate the HTML coverage report with JaCoCo:
 
 ```bash
-mvn clean test jacoco:report
+mvn jacoco:report
 ```
 
 After running the command, you can view the coverage evidence by opening the generated HTML report:
